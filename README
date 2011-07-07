@@ -3,3 +3,27 @@ hospedaje web compartido.
 si un pc se cae seguira el otro.
 
 onda los nodos de diaspora.
+
+
+Podriamos crear este modo de red:
+http://es.wikipedia.org/wiki/Red_en_estrella
+
+Lo que he pensado, es que pagina1, pagina2 esten en la nube.
+Luego al encender los nodos (nuestras pc) miren en la nuve las *pagina1* *pagina2* y las baje a nuestras pc.
+El script luego de eso bajara las paginas que estaran empaquetadas para replicar la informacion, y actualizarla
+...mas tarde hara un ping a una dns compartida entre los usuarios del cluster hibrido,
+
+si da el ping se pone ese nodo en espera y cada x tiempo mirara y hara ping.
+
+Si no da ningun ping iniciara el nodo con la dns compartida.
+
+Resultado:
+
+Una web o varias mantenidas por varias pc amigas
+
+http://dnscompartida/web1
+http://dnscompartida/web2
+
+el script podriamos hacerlo en bash script.
+Luego vemos como empezamos.
+
