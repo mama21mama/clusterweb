@@ -16,8 +16,18 @@
 #       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #       MA 02110-1301, USA.
 #
-# Aporte de @maestrolinux
+####### Aporte de @maestrolinux
 # 0 no da ping
 # 1 si da ping
 PEPA=`ping -c 1 mamalibre.com.ar > /dev/null 2>&1`
-echo $?
+TEXT="$?"
+
+####### Aporte de @mamalibre
+####### si da ping ejecuta el comando echo con la palabra "funca" #######
+#########################################################################
+if [ $TEXT -eq "1" ]
+then
+echo "funca"
+else
+echo "no funca"
+fi
