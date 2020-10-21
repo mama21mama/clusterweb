@@ -6,20 +6,32 @@ CLUSTERWEB_DOMAIN=dominiohub.nsupdate.info
 #enciende servidor web
 #en puerto 8000
 #http://localhost:8000
-cd $HOME/cluster_web/www; python3 -m http.server 8000 &
+cd $HOME/cluster_web/www; python3 -m http.server 8000 & 
 #inicio bucle
 #repite cada 5min
 for (( ; ; ))
 do
-sleep 5m
+sleep 5s
 ping -c30 -i3 $CLUSTERWEB_DOMAIN
 if [ $? -eq 0 ]
 then
 #estado 200
+#si se modifico el md5sum.cw.zip.txt
+#se descarga, si sigue igual no
+cd /tmp
+wget -c $CLUSTERWEB_DOMAIN:8000/out/md5sum.cw.zip.txt
+PEPA=`diff -a /tmp/md5sum.cw.zip.txt $HOME/cluster_web/www/out/md5sum.cw.zip.txt > /dev/null 2>&1`
+TEXT="$?"
+if [ $TEXT -eq "1" ]
+then
+echo "hubo modificacion, descargando cw.zip"
 cd $HOME/cluster_web/www/in; wget -c $CLUSTERWEB_DOMAIN:8000/out/cw.zip;
 unzip -P Cw1234 cw.zip $HOME/cluster_web/
+else
+echo "ninguna modificacion"
+fi
 #fin estado 200
-exit 0
+#exit 0
 else
 #actualiza CLUSTERWEB_DOMAIN
 #se convierte el nodo en hub
