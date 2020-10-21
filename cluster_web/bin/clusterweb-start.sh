@@ -11,7 +11,7 @@ cd $HOME/cluster_web/www; python3 -m http.server 8000 &
 #repite cada 5min
 for (( ; ; ))
 do
-sleep 5s
+sleep 5m
 ping -c30 -i3 $CLUSTERWEB_DOMAIN
 if [ $? -eq 0 ]
 then
