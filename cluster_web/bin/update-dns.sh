@@ -7,8 +7,8 @@
 # then update nsupdate.info
 #
 # VARIABLES:
-HOSTNAME="proyectohub.nsupdate.info" #(example.nsupdate.info)
-SECRET="xxxxxxxxxx"
+HOSTNAME="HOSTNAME" #(example.nsupdate.info)
+SECRET="SECRET"
 UPDATE_URL=https://$HOSTNAME:$SECRET@ipv4.nsupdate.info/nic/update
 #
 # Check current IP:
@@ -26,4 +26,3 @@ if [ $DNS_IP != $CURRENT_IP ]
 then
         wget -q -O - $UPDATE_URL
 fi
-
