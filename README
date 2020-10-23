@@ -52,8 +52,8 @@ Para levantar el servidor es simple
 
 $cd $HOME/cluster_web/; python3 -m http.server 8000
 
-en el navegador vemos la web en http://localhost:8000
-Ando pensando todo....son muchas preguntas que deben hacerse los scripts.
+en el navegador vemos la web en http://localhost:8000 siendo hub o nodo
+Si no somos hub ni nodo usar el dominio http://dominiohub.nsupdate.info:8000
 
 
 Sala jabber para debatir y colaborar con el proyecto:
