@@ -1,6 +1,6 @@
 #!/bin/bash
 #==========================================
-#			source code
+#             source code
 # https://github.com/mama21mama/clusterweb
 #  
 # Dependencia paquetes: zip, wget
