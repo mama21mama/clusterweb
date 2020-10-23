@@ -23,11 +23,18 @@ Cluster Web
 
 Una idea loca...Pero no tanto.
 La idea es tener un dominio que sera un hub, ejemplo
-hubcw.nsupdate.info (ejemplo de hub)
-y 2 o 3 nodos, cuanto mas nodos mejor, estara menos down nuestra web.
+hostname.nsupdate.info (se debe crear un dominio en https://nsupdate.info)
+y 2 o 3 nodos (PC de amigos), cuanto mas nodos mejor, estara menos down nuestra web.
+Los datos de dominio hostname.nsupdate.info se deben copiar entre los amigos a usar 
+Cluster Web para que funcione el script. El primero de los amigos que sera el hub, 
+creara la web. Luego de crearla se hace backup con el script de backup 
+$bash $HOME/cluster_web/bin/backup_md5.sh
+La web estara contenida en $HOME/cluster_web/www/index.html
+Luego el hub cuando se inicia, los demas amigos deben iniciarlo, respaldando al hub en 
+caso de caidas.
 
 
-hasta ahi vamos?
+hasta ahi vamos? :)
 
 _____________________________________________________________
         nodo 1     |        nodo 2             |  nodo 3     |
