@@ -5,7 +5,7 @@
 #  
 # Dependencia paquetes: zip, wget
 # 
-# v1.3 
+# v1.4 
 #
 # Sala jabber para debatir y 
 # colaborar con el proyecto:
@@ -14,7 +14,8 @@
 #==========================================
 #
 # Determina el dominio del hub que usaremos
-CLUSTERWEB_DOMAIN=dominiohub.nsupdate.info
+HOSTNAME="HOSTNAME" #(example.nsupdate.info)
+SECRET="SECRET"
 #
 #enciende servidor web en puerto 8000
 #en el navegador si somos hub http://localhost:8000
@@ -36,7 +37,7 @@ for (( ; ; ))
 do
 sleep 5m
 echo "pregunta si responde el dominio hub"
-ping -c30 -i3 $CLUSTERWEB_DOMAIN
+ping -c3 $HOSTNAME
 if [ $? -eq 0 ]
 then
 #
@@ -48,19 +49,18 @@ then
 #
 echo "descarga md5sum.cw.zip.txt, para luego compararlo"
 cd /tmp
-curl $CLUSTERWEB_DOMAIN:8000/out/md5sum.cw.zip.txt --output md5sum.cw.zip.txt
+curl $HOSTNAME:8000/out/md5sum.cw.zip.txt --output md5sum.cw.zip.txt
 PEPA=`diff -a /tmp/md5sum.cw.zip.txt $HOME/cluster_web/www/out/md5sum.cw.zip.txt > /dev/null 2>&1`
 TEXT="$?"
 if [ $TEXT -eq "1" ]
 then
 echo "hubo modificacion, descargando cw.zip"
-cd $HOME/cluster_web/www/in; curl $CLUSTERWEB_DOMAIN:8000/out/cw.zip --output cw.zip;
+cd $HOME/cluster_web/www/in; curl $HOSTNAME:8000/out/cw.zip --output cw.zip;
 cd $HOME/cluster_web/www/
-unzip -P Cw1234 ./in/cw.zip
+unzip -o -P Cw1234 ./in/cw.zip
 else
 echo "ninguna modificacion, no se descarga md5sum.cw.zip.txt"
 fi
-exit $?
 # Fin funcion comparar md5sum.cw.zip.txt del hub con el nuestro
 #==================================================================
 else
@@ -68,37 +68,29 @@ else
 #    Si modificamos la web
 #    seguir estos pasos.
 #=================================
-#Si soy hub debo crear el backup $HOME/cluster_web/www/out/cw.zip para que 
-#los nodos lo descarguen.
+#Si soy hub debo crear el backup $HOME/cluster_web/www/out/cw.zip 
+#para que los nodos lo descarguen.
 #ademas del archivo $HOME/cluster_web/www/out/md5sum.cw.zip.txt
 #
 #Recuerda!
 #al modificar la web, siempre siendo hub.
 #luego de modificar debo comprimirla
-#con este comando zip
-# 
-#cd $HOME/cluster_web/www;zip -e -P Cw1234 ./out/cw.zip *;
-#
-#
-#luego debo crear un archivo llamado md5sum.cw.zip.txt
 #con este comando.
+# 
+#cd $HOME/cluster_web/bin; bash backup_md5.sh
 #
-#cd $HOME/cluster_web/www/out;md5sum cw.zip > md5sum.cw.zip.txt
-#
-#
-#esos 2 pasos hay que hacer si somos Hub y modificamos la web.
+#ese comando crea backup de la web y la suma md5sum.cw.zip.txt
 #==================================================================
 # Inicio funcion actualiza ip del hub
 #
 # el nodo se convierte en hub
-HOSTNAME="HOSTNAME" #(example.nsupdate.info)
-SECRET="SECRET"
 UPDATE_URL=https://$HOSTNAME:$SECRET@ipv4.nsupdate.info/nic/update
 wget -q -O - $UPDATE_URL
 # 
 # actualiza el dominio hub cada 5min
 # Fin funcion actualiza ip del hub
 #==================================================================
+echo " "
 echo "actualiza ip del dominio hub"
 #
 #==================================================================
