@@ -4,7 +4,7 @@ Instalacion
 lugar de trabajo
 $HOME/cluster_web
 
-editar clusterweb-start.sh la linea 17
+editar clusterweb-start.sh la linea 17, 94 y 95
 CLUSTERWEB_DOMAIN=dominiohub.nsupdate.info
 antes de ejecutarlo
 
