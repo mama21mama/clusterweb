@@ -5,7 +5,7 @@
 #  
 # Dependencia paquetes: zip, wget
 # 
-# v1.3 
+# v1.5 
 #
 # Sala jabber para debatir y 
 # colaborar con el proyecto:

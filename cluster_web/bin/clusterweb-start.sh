@@ -2,10 +2,10 @@
 #==========================================
 #             source code
 # https://github.com/mama21mama/clusterweb
-#  
+# Licencia: GNU GPL v2 
 # Dependencia paquetes: zip, wget
 # 
-# v1.4 
+# v1.5 
 #
 # Sala jabber para debatir y 
 # colaborar con el proyecto:
@@ -16,6 +16,7 @@
 # Determina el dominio del hub que usaremos
 HOSTNAME="HOSTNAME" #(example.nsupdate.info)
 SECRET="SECRET"
+PORT="8000" #(puerto que usara el servidor)
 #
 #enciende servidor web en puerto 8000
 #en el navegador si somos hub http://localhost:8000
@@ -25,7 +26,7 @@ SECRET="SECRET"
 #==================================================================
 # Funcion inicio el servidor www
 #
-cd $HOME/cluster_web/www; python3 -m http.server 8000 > $HOME/cluster_web/log.txt 2>&1 &
+cd $HOME/cluster_web/www; python3 -m http.server $PORT > $HOME/cluster_web/log.txt 2>&1 &
 #
 # Fin funcion inicio servidor www
 #==================================================================
@@ -35,7 +36,8 @@ echo "inicio el servidor"
 # Funcion si esta vivo si da ping
 for (( ; ; ))
 do
-sleep 5m
+sleep 5s
+clear
 echo "pregunta si responde el dominio hub"
 ping -c3 $HOSTNAME
 if [ $? -eq 0 ]
@@ -92,6 +94,8 @@ wget -q -O - $UPDATE_URL
 #==================================================================
 echo " "
 echo "actualiza ip del dominio hub"
+echo -e "\e[30;48;5;82m Somos Hub! \e[0m"
+echo -e "\e[30;48;5;82m Puedes actualizar la web. \e[0m"
 #
 #==================================================================
 # Inicio funcion autobackup web
