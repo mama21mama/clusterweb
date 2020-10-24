@@ -4,9 +4,10 @@ Instalacion
 lugar de trabajo
 $HOME/cluster_web
 
-editar clusterweb-start.sh la linea 17, 18
+editar clusterweb-start.sh la linea 17, 18, 19
 HOSTNAME="HOSTNAME" #(example.nsupdate.info)
 SECRET="SECRET"
+PORT="8000" #(puerto que usara el servidor)
 antes de ejecutarlo
 
 ejecutar el clusterweb:
