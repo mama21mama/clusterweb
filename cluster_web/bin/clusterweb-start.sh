@@ -36,7 +36,7 @@ echo "inicio el servidor"
 # Funcion si esta vivo si da ping
 for (( ; ; ))
 do
-sleep 5s
+sleep 5m
 clear
 echo "pregunta si responde el dominio hub"
 ping -c3 $HOSTNAME
