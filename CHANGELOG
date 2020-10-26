@@ -1,0 +1,10 @@
+Version 1.6 (26-10-2020)
+  ClusterWeb Core:
+    un fallo impedia el funcionamiento, no comparaba la suma 
+    md5sum de la web comprimida cw.zip
+    descargaba una y otra vez la web.
+    Se reemplazo curl por wget en gestor de descarga de la web.
+    Se modifico añadiendo un parametro en unzip -o
+
+ backup_md5.sh
+    Se modifico añadiendo un parametro en unzip -o 
