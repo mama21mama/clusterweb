@@ -1,11 +1,13 @@
 #!/bin/bash
 #==========================================
-#             source code
+#             source code v1.6 
 # https://github.com/mama21mama/clusterweb
+# mirror https://u.urown.cloud/pwfp5
 # Licencia: GNU GPL v2 
 # Dependencia paquetes: zip, wget
 # 
-# v1.5 
+# Creado por las neuronas activas de
+# Fabián Bonetti 
 #
 # Sala jabber para debatir y 
 # colaborar con el proyecto:
@@ -30,15 +32,20 @@ cd $HOME/cluster_web/www; python3 -m http.server $PORT > $HOME/cluster_web/log.t
 #
 # Fin funcion inicio servidor www
 #==================================================================
+echo ""
 echo "inicio el servidor"
+echo ""
+sleep 5m
 #
 #==================================================================
 # Funcion si esta vivo si da ping
 for (( ; ; ))
 do
-sleep 5m
+sleep 5s
 clear
+echo ""
 echo "pregunta si responde el dominio hub"
+echo ""
 ping -c3 $HOSTNAME
 if [ $? -eq 0 ]
 then
@@ -49,19 +56,33 @@ then
 #==================================================================
 # Inicio funcion comparar md5sum.cw.zip.txt del hub con el nuestro
 #
+echo ""
 echo "descarga md5sum.cw.zip.txt, para luego compararlo"
+echo ""
+sleep 5s
 cd /tmp
-curl $HOSTNAME:8000/out/md5sum.cw.zip.txt --output md5sum.cw.zip.txt
+wget -c $HOSTNAME:8000/out/md5sum.cw.zip.txt
 PEPA=`diff -a /tmp/md5sum.cw.zip.txt $HOME/cluster_web/www/out/md5sum.cw.zip.txt > /dev/null 2>&1`
 TEXT="$?"
 if [ $TEXT -eq "1" ]
 then
+echo ""
 echo "hubo modificacion, descargando cw.zip"
-cd $HOME/cluster_web/www/in; curl $HOSTNAME:8000/out/cw.zip --output cw.zip;
+echo ""
+sleep 5s 
+cd $HOME/cluster_web/www/in; wget -c $HOSTNAME:8000/out/cw.zip;
 cd $HOME/cluster_web/www/
 unzip -o -P Cw1234 ./in/cw.zip
+echo ""
+echo "Se descomprimio la web completa"
+echo ""
+sleep 5s
+cp /tmp/md5sum.cw.zip.txt $HOME/cluster_web/www/out/
 else
+echo ""
 echo "ninguna modificacion, no se descarga md5sum.cw.zip.txt"
+echo ""
+sleep 5s
 fi
 # Fin funcion comparar md5sum.cw.zip.txt del hub con el nuestro
 #==================================================================
@@ -96,6 +117,7 @@ echo " "
 echo "actualiza ip del dominio hub"
 echo -e "\e[30;48;5;82m Somos Hub! \e[0m"
 echo -e "\e[30;48;5;82m Puedes actualizar la web. \e[0m"
+sleep 5s
 #
 #==================================================================
 # Inicio funcion autobackup web
@@ -103,7 +125,7 @@ echo -e "\e[30;48;5;82m Puedes actualizar la web. \e[0m"
 # Si la web es demaciado pesada en tamaño se debe desactivar
 # imaginate bajar 1gb cada 5 min! 
 #cd $HOME/cluster_web/www
-#zip -e -P Cw1234 ./out/cw.zip *;
+#zip -r -e -P Cw1234 ./out/cw.zip *;
 #cd $HOME/cluster_web/www/out
 #md5sum cw.zip > md5sum.cw.zip.txt
 # funcion automatica crea backup de la web cada 5 min
