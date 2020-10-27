@@ -41,7 +41,7 @@ sleep 5s
 # Funcion si esta vivo si da ping
 for (( ; ; ))
 do
-sleep 5m
+sleep 5s
 clear
 echo ""
 echo "pregunta si responde el dominio hub"
@@ -82,6 +82,7 @@ else
 echo ""
 echo "ninguna modificacion, no se descargara cw.zip"
 echo ""
+sleep 5m
 fi
 # Fin funcion comparar md5sum.cw.zip.txt del hub con el nuestro
 #==================================================================
