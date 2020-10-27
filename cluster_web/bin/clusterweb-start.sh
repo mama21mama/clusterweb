@@ -1,6 +1,6 @@
 #!/bin/bash
 #==========================================
-#             source code v1.6 
+#             source code v20.10
 # https://github.com/mama21mama/clusterweb
 # mirror https://u.urown.cloud/pwfp5
 # Licencia: GNU GPL v2 
@@ -80,9 +80,9 @@ sleep 5s
 cp /tmp/md5sum.cw.zip.txt $HOME/cluster_web/www/out/
 else
 echo ""
-echo "ninguna modificacion, no se descarga md5sum.cw.zip.txt"
+echo "ninguna modificacion, no se descargara cw.zip"
 echo ""
-sleep 5s
+sleep 5m
 fi
 # Fin funcion comparar md5sum.cw.zip.txt del hub con el nuestro
 #==================================================================
