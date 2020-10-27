@@ -1,11 +1,13 @@
 #!/bin/bash
 #==========================================
-#             source code
+#             source code v20.10
 # https://github.com/mama21mama/clusterweb
-#  
+# mirror https://u.urown.cloud/pwfp5
+# Licencia: GNU GPL v2 
 # Dependencia paquetes: zip, wget
 # 
-# v1.6 
+# Creado por las neuronas activas de
+# Fabián Bonetti 
 #
 # Sala jabber para debatir y 
 # colaborar con el proyecto:
