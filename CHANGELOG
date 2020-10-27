@@ -1,3 +1,9 @@
+Version 20.10 (27-10-2020)
+  ClusterWeb Core:
+    Pasamos a versiones con fechas
+    ejemplo: Año.mes: 15.4    Año.mes.menor: 15.4.2
+    fix, bucle de 5s que buscaba la md5sum corregido.
+
 Version 1.6 (26-10-2020)
   ClusterWeb Core:
     un fallo impedia el funcionamiento, no comparaba la suma 
