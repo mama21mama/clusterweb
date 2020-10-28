@@ -35,14 +35,14 @@ cd $HOME/cluster_web/www; python3 -m http.server $PORT > $HOME/cluster_web/log.t
 echo ""
 echo "Inicio el servidor"
 echo ""
-sleep 5m
+sleep 5s
 echo -e "\e[30;48;5;82m Listo \e[0m"
 #
 #==================================================================
 # Funcion si esta vivo si da ping
 for (( ; ; ))
 do
-sleep 5s
+sleep 5m
 clear
 echo ""
 echo "Haciendo ping al HOSTNAME"
