@@ -1,6 +1,6 @@
 #!/bin/bash
 #==========================================
-#             source code v20.10
+#             source code v20.10.1
 # https://github.com/mama21mama/clusterweb
 # mirror https://u.urown.cloud/pwfp5
 # Licencia: GNU GPL v2 
@@ -33,18 +33,19 @@ cd $HOME/cluster_web/www; python3 -m http.server $PORT > $HOME/cluster_web/log.t
 # Fin funcion inicio servidor www
 #==================================================================
 echo ""
-echo "inicio el servidor"
+echo "Inicio el servidor"
 echo ""
-sleep 5s
+sleep 5m
+echo -e "\e[30;48;5;82m Listo \e[0m"
 #
 #==================================================================
 # Funcion si esta vivo si da ping
 for (( ; ; ))
 do
-sleep 5m
+sleep 5s
 clear
 echo ""
-echo "pregunta si responde el dominio hub"
+echo "Haciendo ping al HOSTNAME"
 echo ""
 ping -c3 $HOSTNAME
 if [ $? -eq 0 ]
@@ -61,7 +62,8 @@ echo "descarga md5sum.cw.zip.txt, para luego compararlo"
 echo ""
 sleep 5s
 cd /tmp
-wget -c $HOSTNAME:8000/out/md5sum.cw.zip.txt
+#wget -c $HOSTNAME:8000/out/md5sum.cw.zip.txt
+curl $HOSTNAME:8000/out/md5sum.cw.zip.txt --output md5sum.cw.zip.txt
 PEPA=`diff -a /tmp/md5sum.cw.zip.txt $HOME/cluster_web/www/out/md5sum.cw.zip.txt > /dev/null 2>&1`
 TEXT="$?"
 if [ $TEXT -eq "1" ]
@@ -72,12 +74,19 @@ echo ""
 sleep 5s 
 cd $HOME/cluster_web/www/in; wget -c $HOSTNAME:8000/out/cw.zip;
 cd $HOME/cluster_web/www/
-unzip -o -P Cw1234 ./in/cw.zip
+unzip -o -P Cw1234 ./in/cw.zip;
 echo ""
 echo "Se descomprimio la web completa"
 echo ""
 sleep 5s
-cp /tmp/md5sum.cw.zip.txt $HOME/cluster_web/www/out/
+echo -e "\e[30;48;5;82m Listo \e[0m"
+echo ""
+echo "Se crea backup de la web completa"
+echo ""
+mv -f /tmp/md5sum.cw.zip.txt $HOME/cluster_web/www/out/
+mv -f $HOME/cluster_web/www/in/cw.zip $HOME/cluster_web/www/out/
+sleep 5s
+echo -e "\e[30;48;5;82m Listo \e[0m"
 else
 echo ""
 echo "ninguna modificacion, no se descargara cw.zip"
@@ -108,7 +117,7 @@ else
 #
 # el nodo se convierte en hub
 UPDATE_URL=https://$HOSTNAME:$SECRET@ipv4.nsupdate.info/nic/update
-wget -q -O - $UPDATE_URL
+#wget -q -O - $UPDATE_URL
 # 
 # actualiza el dominio hub cada 5min
 # Fin funcion actualiza ip del hub
