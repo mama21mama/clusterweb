@@ -91,7 +91,7 @@ else
 echo ""
 echo "ninguna modificacion, no se descargara cw.zip"
 echo ""
-sleep 5s
+sleep 2m
 fi
 # Fin funcion comparar md5sum.cw.zip.txt del hub con el nuestro
 #==================================================================
