@@ -117,7 +117,7 @@ else
 #
 # el nodo se convierte en hub
 UPDATE_URL=https://$HOSTNAME:$SECRET@ipv4.nsupdate.info/nic/update
-#wget -q -O - $UPDATE_URL
+wget -q -O - $UPDATE_URL
 # 
 # actualiza el dominio hub cada 5min
 # Fin funcion actualiza ip del hub
