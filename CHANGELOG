@@ -1,3 +1,10 @@
+Version 20.10.1 (28-10-2020)
+  ClusterWeb Core:
+  La copia de verificacion habia errores en wget, no descargaba si poniamos un tiempo de 5s
+  se cambio a curl, ahora descarga para proseguir con el script.
+  backup_md5.sh:
+  Se perfecciono el script borrando los archivos antiguos que no permitia al core trabajar.
+  
 Version 20.10 (27-10-2020)
   ClusterWeb Core:
     Pasamos a versiones con fechas
@@ -12,5 +19,5 @@ Version 1.6 (26-10-2020)
     Se reemplazo curl por wget en gestor de descarga de la web.
     Se modifico añadiendo un parametro en unzip -o
 
- backup_md5.sh
+ backup_md5.sh:
     Se modifico añadiendo un parametro en unzip -o 
