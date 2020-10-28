@@ -4,7 +4,7 @@ Instalacion
 lugar de trabajo
 $HOME/cluster_web
 
-editar clusterweb-start.sh la linea 17, 18, 19
+editar clusterweb-start.sh la linea 19, 20, 21
 HOSTNAME="HOSTNAME" #(example.nsupdate.info)
 SECRET="SECRET"
 PORT="8000" #(puerto que usara el servidor)
@@ -19,7 +19,7 @@ $bash clusterweb-start.sh
 
 
 
-Cluster Web v1.5
+Cluster Web v20.10.1
 ===========
 
 Una idea loca...Pero no tanto.
@@ -73,5 +73,4 @@ reisub@u.urown.cloud
 
 info
 https://friendicarg.nsupdate.info/display/69172192-115f-903b-a4bc-465795532352
-
 
