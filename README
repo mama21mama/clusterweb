@@ -7,7 +7,7 @@ $HOME/cluster_web
 editar $HOME/cluster_web/bin/clusterweb-start.sh 
 la linea 19, 20, 21
 HOSTNAME="HOSTNAME" #(example.nsupdate.info)
-SECRET="SECRET"
+SECRET="SECRET" #(llave secreta del dominio nsupdate.info)
 PORT="8000" #(puerto que usara el servidor)
 antes de ejecutarlo
 
